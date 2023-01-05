@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# npm test
+# 当我们执行 git commit -m "xxx" 时，
+# 会先对 src 目录下所有的 .vue、.js、.ts 文件执行 eslint --fix 命令，
+# 如果 ESLint 通过，成功 commit，否则终止 commit。
+# lint-staged 这个工具一般结合 husky 来使用，
+# 它可以让 husky 的 hook 触发的命令只作用于 git add那些文件（即 git 暂存区的文件），而不会影响到其他文件。
+npx lint-staged
