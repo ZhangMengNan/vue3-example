@@ -7,6 +7,7 @@ import App from './App.vue'
 import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Test from '@/views/Test.vue'
+import EventEmitter from '@/views/EventEmitter/index.vue'
 
 import Worker from '../worker?worker'
 import { version } from '../package.json'
@@ -36,6 +37,11 @@ const router = createRouter({
       path: '/test',
       name: 'test',
       component: Test
+    },
+    {
+      path: '/event/emitter',
+      name: 'EventEmitter',
+      component: EventEmitter
     }
   ]
 })

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { Button } from 'ant-design-vue'
 import useSetInterval from '@/hooks/useSetInterval'
+import useIsWindowVisible from '@/hooks/useIsWindowVisible'
 
 const count = ref(6)
 const isEnd = ref(false)
@@ -14,6 +15,9 @@ useSetInterval(() => {
     isEnd.value = false
     count.value = 6
   }
+})
+useIsWindowVisible((isWindowVisible) => {
+  document.title = isWindowVisible ? '回来啦' : '离开啦'
 })
 </script>
 

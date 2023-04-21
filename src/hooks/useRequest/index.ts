@@ -33,10 +33,8 @@ function useRequest<T, P extends any[]>(service: Service<T, P>, options?: Option
     }
   }
 
-  const runAsync = () => {}
-
   onMounted(() => {
-    // @ts-ignore
+    // @ts-expect-error
     if (!manual) run()
   })
 
