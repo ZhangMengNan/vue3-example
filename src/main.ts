@@ -8,6 +8,7 @@ import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Test from '@/views/Test.vue'
 import EventEmitter from '@/views/EventEmitter/index.vue'
+import Debounce from '@/views/Debounce.vue'
 
 import Worker from '../worker?worker'
 import { version } from '../package.json'
@@ -42,6 +43,11 @@ const router = createRouter({
       path: '/event/emitter',
       name: 'EventEmitter',
       component: EventEmitter
+    },
+    {
+      path: '/debounce',
+      name: 'Debounce',
+      component: Debounce
     }
   ]
 })
