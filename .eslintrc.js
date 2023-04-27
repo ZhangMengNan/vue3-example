@@ -22,6 +22,7 @@ module.exports = {
     'n/no-callback-literal': 'off',
     '@typescript-eslint/prefer-optional-chain': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
-    '@typescript-eslint/no-unused-vars': 'off'
+    '@typescript-eslint/no-unused-vars': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off'
   }
 }

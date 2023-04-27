@@ -21,6 +21,7 @@ export default defineConfig({
   // 哪些文件是否需要预编译
   optimizeDeps: {
     // exclude: ['lodash-es'] // 例：lodash-es 插件内置许多其它第三方插件，如不需要预编译，在 network 会有许多格外的资源请求
+    exclude: ['vue-demi']
   },
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) }

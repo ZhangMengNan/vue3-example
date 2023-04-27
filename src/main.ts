@@ -9,6 +9,8 @@ import Login from '@/views/Login.vue'
 import Test from '@/views/Test.vue'
 import EventEmitter from '@/views/EventEmitter/index.vue'
 import Debounce from '@/views/Debounce.vue'
+import Throttle from '@/views/Throttle.vue'
+import IntersectionObserver from '@/views/IntersectionObserver.vue'
 
 import Worker from '../worker?worker'
 import { version } from '../package.json'
@@ -48,6 +50,16 @@ const router = createRouter({
       path: '/debounce',
       name: 'Debounce',
       component: Debounce
+    },
+    {
+      path: '/throttle',
+      name: 'Throttle',
+      component: Throttle
+    },
+    {
+      path: '/intersection/observer',
+      name: 'IntersectionObserver',
+      component: IntersectionObserver
     }
   ]
 })
