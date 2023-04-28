@@ -1,39 +1,45 @@
-import { ref, watchEffect } from 'vue'
-import { UseIntersectionObserverOptions } from './type'
+import { ref, watchEffect, watch, onUnmounted } from 'vue'
+import useSupported from '../useSupported'
+
+import { unrefElement } from '@/utils'
+import { MaybeComputedElementRef } from '@/utils/types'
+
+interface UseIntersectionObserverOptions {
+  root?: MaybeComputedElementRef
+  rootMargin?: string
+  threshold?: number | number[]
+}
 
 export default function useInViewport(
+  target: MaybeComputedElementRef,
   callback: IntersectionObserverCallback,
   options: UseIntersectionObserverOptions = {}
 ) {
   const { root, rootMargin = '0px', threshold = 0.1 } = options
-  const observerRefElement = ref(null) // 创建一个ref对象，用于存储观察的元素
-  const intersectionObserverRef = ref<IntersectionObserver | null>(null) // 创建一个ref对象，用于存储IntersectionObserver实例
+  const isSupported = useSupported(() => window && 'IntersectionObserver' in window)
+  const intersectionObserverRef = ref<IntersectionObserver | null>(null)
 
-  watchEffect((onInvalidate) => {
-    const isSupported = window && 'IntersectionObserver' in window // 判断是否支持IntersectionObserver
+  const stop = () => intersectionObserverRef.value && intersectionObserverRef.value.disconnect()
 
-    if (isSupported) {
-      // 如果IntersectionObserver实例不存在且观察的元素存在
-      if (!intersectionObserverRef.value && observerRefElement.value) {
-        // 创建IntersectionObserver实例
-        intersectionObserverRef.value = new IntersectionObserver(callback, {
-          rootMargin,
-          threshold,
-          root
-        })
+  watch(
+    () => [unrefElement(target), unrefElement(root)] as const,
+    ([target, root]) => {
+      if (!isSupported.value || !target || !root) return
 
-        // 开始观察元素
-        intersectionObserverRef.value.observe(observerRefElement.value)
-      }
-
-      // 如果IntersectionObserver实例存在且观察的元素不存在
-      if (intersectionObserverRef.value && !observerRefElement.value)
-        intersectionObserverRef.value.disconnect() // 断开观察
+      intersectionObserverRef.value = new IntersectionObserver(callback, {
+        rootMargin,
+        threshold,
+        root: unrefElement(root)
+      })
+      intersectionObserverRef.value.observe(target)
+    },
+    {
+      immediate: true,
+      flush: 'post'
     }
+  )
 
-    onInvalidate(() => intersectionObserverRef.value && intersectionObserverRef.value.disconnect()) // 返回一个函数，用于在组件卸载时断开观察
-  })
+  onUnmounted(stop)
 
-  // 返回观察元素的ref对象
-  return { observerRef: observerRefElement }
+  return { stop }
 }

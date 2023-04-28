@@ -3,12 +3,14 @@ import { ref } from 'vue'
 import useInViewport from '@/hooks/useInViewport'
 
 const parentRef = ref()
+const childrenRef = ref()
 const inViewport = ref(false)
-const { observerRef } = useInViewport(
+useInViewport(
+  childrenRef,
   ([entry]: IntersectionObserverEntry[]) => (inViewport.value = entry.isIntersecting),
   {
     threshold: [0, 0.25, 0.5, 0.75, 1],
-    root: parentRef.value
+    root: parentRef
   }
 )
 </script>
@@ -22,7 +24,7 @@ const { observerRef } = useInViewport(
       scroll here
       <div :style="{ height: '800px' }">
         <div
-          ref="observerRef"
+          ref="childrenRef"
           :style="{
             border: '1px solid',
             height: '100px',

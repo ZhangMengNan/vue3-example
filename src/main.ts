@@ -11,6 +11,7 @@ import EventEmitter from '@/views/EventEmitter/index.vue'
 import Debounce from '@/views/Debounce.vue'
 import Throttle from '@/views/Throttle.vue'
 import IntersectionObserver from '@/views/IntersectionObserver.vue'
+import MutationObserver from '@/views/MutationObserver.vue'
 
 import Worker from '../worker?worker'
 import { version } from '../package.json'
@@ -60,6 +61,11 @@ const router = createRouter({
       path: '/intersection/observer',
       name: 'IntersectionObserver',
       component: IntersectionObserver
+    },
+    {
+      path: '/mutation/observer',
+      name: 'MutationObserver',
+      component: MutationObserver
     }
   ]
 })
