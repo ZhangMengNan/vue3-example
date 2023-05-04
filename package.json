@@ -63,6 +63,7 @@
     "prettier": "^2.7.1",
     "pug": "^3.0.2",
     "typescript": "^5.0.0-dev.20230221",
+    "unocss": "^0.51.8",
     "unplugin-auto-import": "^0.14.4",
     "unplugin-vue-components": "^0.24.0",
     "vite": "^4.0.0",

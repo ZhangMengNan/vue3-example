@@ -23,3 +23,5 @@ export function unrefElement<T extends MaybeElement>(
 
 // 定义一个判断值是否为非nullish的函数
 export const notNullish = <T = any>(val?: T | null | undefined): val is T => val !== null
+
+export const noop = () => {}

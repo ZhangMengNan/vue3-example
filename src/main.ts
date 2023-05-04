@@ -12,10 +12,14 @@ import Debounce from '@/views/Debounce.vue'
 import Throttle from '@/views/Throttle.vue'
 import IntersectionObserver from '@/views/IntersectionObserver.vue'
 import MutationObserver from '@/views/MutationObserver.vue'
+import Image from '@/views/Image.vue'
 
 import Worker from '../worker?worker'
 import { version } from '../package.json'
 import 'ant-design-vue/dist/antd.css'
+import './styles/vars.less'
+import 'virtual:uno.css'
+
 console.log('version', version)
 
 // const worker = new Worker()
@@ -66,6 +70,11 @@ const router = createRouter({
       path: '/mutation/observer',
       name: 'MutationObserver',
       component: MutationObserver
+    },
+    {
+      path: '/image',
+      name: 'Image',
+      component: Image
     }
   ]
 })
