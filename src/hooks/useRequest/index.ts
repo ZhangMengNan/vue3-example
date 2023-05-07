@@ -1,4 +1,6 @@
 import { ref, onMounted } from 'vue'
+
+import { noop } from '@/utils'
 import { Service, Options } from './type'
 
 /**
@@ -13,7 +15,7 @@ import { Service, Options } from './type'
  */
 
 function useRequest<T, P extends any[]>(service: Service<T, P>, options?: Options<T, P>) {
-  const { manual = false, onSuccess, onError } = options ?? {}
+  const { manual = false, onSuccess = noop, onError = noop } = options ?? {}
   const loading = ref(false)
   const data = ref<T>()
   const error = ref<Error>()
@@ -33,10 +35,8 @@ function useRequest<T, P extends any[]>(service: Service<T, P>, options?: Option
     }
   }
 
-  onMounted(() => {
-    // @ts-expect-error
-    if (!manual) run()
-  })
+  // @ts-expect-error
+  onMounted(() => !manual && run())
 
   return {
     loading,

@@ -1,25 +1,23 @@
-import { ref, onUnmounted } from 'vue'
+import { onUnmounted, ref } from 'vue'
 
 /**
  * @param {Function} callback - 要执行的回调函数
  * @param {number} delay - 延迟时间，单位为毫秒，默认为100毫秒
  */
 export default function useThrottle<T extends (...args: any[]) => void>(callback: T, delay = 100) {
-  const timer = ref<NodeJS.Timeout | null>(null)
+  const timer = ref<NodeJS.Timeout | ReturnType<typeof setTimeout> | null>(null)
 
   const run = (...args: Parameters<T>) => {
-    if (timer.value !== null) return
+    if (timer.value) return
 
     timer.value = setTimeout(() => {
       callback(...args)
-      timer.value = null
+      cancel()
     }, delay)
   }
 
   const cancel = () => {
-    if (timer.value === null) return
-
-    clearTimeout(timer.value)
+    timer.value && clearTimeout(timer.value)
     timer.value = null
   }
 

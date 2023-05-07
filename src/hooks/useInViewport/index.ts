@@ -1,15 +1,17 @@
-import { ref, watchEffect, watch, onUnmounted } from 'vue'
-import useSupported from '../useSupported'
+import { ref, watch, onUnmounted } from 'vue'
+import useSupported from '@/hooks/useSupported'
 
 import { unrefElement } from '@/utils'
+
 import { MaybeComputedElementRef } from '@/utils/types'
+import { UseIntersectionObserverOptions } from './type'
 
-interface UseIntersectionObserverOptions {
-  root?: MaybeComputedElementRef
-  rootMargin?: string
-  threshold?: number | number[]
-}
-
+/**
+ * @param target 目标元素
+ * @param callback 回调函数
+ * @param options 选项
+ * @returns 停止监听函数
+ */
 export default function useInViewport(
   target: MaybeComputedElementRef,
   callback: IntersectionObserverCallback,

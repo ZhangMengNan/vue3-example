@@ -7,8 +7,8 @@ const props = defineProps({ focus$: EventEmitter<void> })
 
 <template>
   <div>
-    <span :style="{ marginRight: '20px' }">您收到了一条消息</span>
-    <button type="button" @click="props.focus$?.emit()">回复</button>
+    <span class="mr">您收到了一条消息</span>
+    <a-button type="primary" @click="props.focus$?.emit()">回复</a-button>
   </div>
 </template>
 

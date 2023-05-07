@@ -5,11 +5,11 @@ import { EventEmitter } from '@/hooks/useEventBus'
 const inputRef = ref()
 const props = defineProps({ focus$: EventEmitter<void> })
 
-props.focus$?.useSubscription(() => inputRef.value.focus())
+props.focus$?.useSubscription((e) => inputRef.value.focus())
 </script>
 
 <template>
-  <a-input ref="inputRef" placeholder="输入回复" :style="{ marginTop: '20px', width: '200px' }" />
+  <a-input ref="inputRef" placeholder="输入回复" class="mt" />
 </template>
 
 <style lang="less" scoped></style>

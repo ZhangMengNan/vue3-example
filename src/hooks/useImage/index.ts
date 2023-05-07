@@ -1,21 +1,9 @@
 import { watch, ref, shallowRef } from 'vue'
 
-import { noop, toValue } from '@/utils'
+import { toValue } from '@/utils'
+
+import { UseImageOptions, UseAsyncStateOptions } from './type'
 import { MaybeRefOrGetter } from '@/utils/types'
-
-interface UseImageOptions {
-  src: string
-  srcset?: string
-  sizes?: string
-}
-
-interface UseAsyncStateOptions<D = any> {
-  delay?: number
-  immediate?: boolean
-  onError?: (e: unknown) => void
-  onSuccess?: (data: D) => void
-  resetOnExecute?: boolean
-}
 
 function loadImage({ src, srcset, sizes }: UseImageOptions): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
@@ -30,6 +18,11 @@ function loadImage({ src, srcset, sizes }: UseImageOptions): Promise<HTMLImageEl
   })
 }
 
+/**
+ * @param options 图片加载参数
+ * @param asyncStateOptions 异步状态参数
+ * @returns { isLoading, isReady, error }
+ */
 function useImage(
   options: MaybeRefOrGetter<UseImageOptions>,
   asyncStateOptions: UseAsyncStateOptions = {}
@@ -37,8 +30,8 @@ function useImage(
   const {
     delay = 5000,
     immediate = true,
-    onSuccess = noop,
-    onError = noop,
+    onSuccess,
+    onError,
     resetOnExecute = true
   } = asyncStateOptions
   const isLoading = ref(false)
@@ -59,15 +52,13 @@ function useImage(
     ])
       .then((res) => {
         isReady.value = true
-        onSuccess(res)
+        onSuccess?.(res)
       })
       .catch((e) => {
         error.value = e
-        onError(e)
+        onError?.(e)
       })
-      .finally(() => {
-        isLoading.value = false
-      })
+      .finally(() => (isLoading.value = false))
   }
 
   if (immediate) loadImageWithTimeout()

@@ -1,33 +1,31 @@
 :root {
-  --vp-c-accent: #35495e;
-  --vp-c-brand: #44bd87;
-  --vp-c-text-code: #5d6f5d;
+  --vt-c-bg-white: #fff;
+  --vt-c-bg-black: #000;
+  --vt-c-text-black: #000;
+  --vt-c-text-white: #fff;
+}
 
-  --vp-code-block-bg: rgba(125, 125, 125, 0.04);
-  --vp-code-copy-code-bg: rgba(125, 125, 125, 0.1);
-  --vp-code-copy-code-hover-bg: rgba(125, 125, 125, 0.2);
+html {
+  --color-background: var(--vt-c-bg-white);
+  --color-text: var(--vt-c-text-black);
+}
 
-  --vp-c-disabled-bg: rgba(125, 125, 125, 0.2);
-  /* fix contrast on gray cards: used by --vp-c-text-2 */
-  --vp-c-text-light-2: rgba(56 56 56 / 70%);
-  --vp-c-text-dark-2: rgba(56 56 56 / 70%);
+html.dark {
+  --color-background: var(--vt-c-bg-black);
+  --color-text: var(--vt-c-text-white);
+}
 
-  --vp-custom-block-info-bg: transparent;
-  --vp-custom-block-tip-bg: transparent;
+body,
+html {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
 
-  --vp-custom-block-warning-bg: #d9a40605;
-  --vp-custom-block-warning-text: #d9a406;
-  --vp-custom-block-warning-border: #d9a40630;
-
-  --vp-custom-block-tip-bg: #44bd8705;
-  --vp-custom-block-tip-text: #44bd87;
-  --vp-custom-block-tip-border: #44bd8730;
-
-  --vp-c-green-dark: #059669;
-  --vp-c-green-darker: #047857;
-
-  --vp-c-brand-dark: var(--vp-c-green-dark);
-  --vp-c-brand-darker: var(--vp-c-green-darker);
+h1,
+p {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
 }
 
 img {

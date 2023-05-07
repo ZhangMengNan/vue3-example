@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import useEventEmitter from '@/hooks/useEventBus'
+import useEventBus from '@/hooks/useEventBus'
 
 import MessageBox from './MessageBox.vue'
 import InputBox from './InputBox.vue'
 
-const focus$ = useEventEmitter()
+const focus$ = useEventBus()
 </script>
 
 <template>
-  <div>
+  <div class="w-sm my-0 mx-a p-8">
     <MessageBox :focus$="focus$" />
     <InputBox :focus$="focus$" />
   </div>

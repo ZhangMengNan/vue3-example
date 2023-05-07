@@ -38,24 +38,25 @@ const { loading: editLoading, run } = useRequest(editUsername, {
 </script>
 
 <template>
-  <div>
-    <h1>默认请求：</h1>
-    <div v-if="defaultLoading">loading...</div>
-    <div v-if="data">Username: {{ data }}</div>
-    <div v-if="error">{{ error.message }}</div>
-  </div>
-  <div>
-    <h1>手动触发：</h1>
-    <input
-      type="text"
-      :value="text"
-      @input="(event: Event) => (text = (event.target as HTMLInputElement).value)"
-      placeholder="Please enter username"
-      :style="{ width: '240px', marginRight: '16px' }"
-    />
-    <button :disabled="editLoading" type="button" @click="run(text)">
-      {{ editLoading ? 'Loading' : 'Edit' }}
-    </button>
+  <div class="w-sm my-0 mx-a p-8">
+    <div>
+      <h1 class="mb">默认请求：</h1>
+      <div v-if="defaultLoading">loading...</div>
+      <div v-if="data">Username: {{ data }}</div>
+      <div v-if="error" class="color-red-600">{{ error.message }}</div>
+    </div>
+    <div class="mt-8">
+      <h1 class="mb">手动触发：</h1>
+      <a-input
+        :value="text"
+        placeholder="请输入用户名"
+        @change="(event: Event) => (text = (event.target as HTMLInputElement).value)"
+        class="mb"
+      />
+      <a-button type="primary" :disabled="editLoading" :loading="editLoading" @click="run(text)">
+        Edit
+      </a-button>
+    </div>
   </div>
 </template>
 

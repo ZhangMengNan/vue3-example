@@ -1,6 +1,6 @@
 import { ref, onUnmounted, onMounted } from 'vue'
 
-type Subscription<T> = (val: T) => void
+import { Subscription } from './type'
 
 /**
  * 事件订阅器，用于管理事件的订阅和发布
@@ -27,7 +27,7 @@ export class EventEmitter<T> {
     callbackRef.value = callback
 
     onMounted(() => {
-      const subscription = (val: T) => callbackRef.value != null && callbackRef.value(val)
+      const subscription = (val: T) => callbackRef.value?.(val)
 
       this.subscriptions.add(subscription)
     })
@@ -40,7 +40,7 @@ export class EventEmitter<T> {
  * 事件订阅器的自定义 Hook
  * @returns 事件订阅器实例
  */
-export default function useEventEmitter<T = void>() {
+export default function useEventBus<T = void>() {
   const eventEmitterRef = ref<EventEmitter<T>>()
   if (eventEmitterRef.value == null) eventEmitterRef.value = new EventEmitter()
 
