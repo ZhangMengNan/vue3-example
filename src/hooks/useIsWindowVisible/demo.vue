@@ -7,7 +7,9 @@ useIsWindowVisible((isWindowVisible) => (document.title = isWindowVisible ? '回
 </script>
 
 <template>
-  <Container> <p class="color-red-600">请查看浏览器标签栏 title</p> </Container>
+  <Container>
+    <p class="color-red-600">请查看浏览器标签栏 title</p>
+  </Container>
 </template>
 
 <style lang="less" scoped></style>

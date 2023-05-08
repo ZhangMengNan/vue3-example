@@ -1,4 +1,4 @@
-import { ref, watch, onMounted } from 'vue'
+import { ref, watch } from 'vue'
 import { defineStore } from 'pinia'
 
 import { Theme } from './type'
@@ -8,10 +8,6 @@ const useTheme = defineStore(
   () => {
     const theme = ref('light')
     const toggle = (val: Theme) => (theme.value = val)
-
-    onMounted(() => {
-      console.log('hhhh')
-    })
 
     watch(theme, (newVal, oldVal) => {
       document.querySelector('html')?.classList.remove(oldVal)
