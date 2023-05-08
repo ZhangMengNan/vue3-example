@@ -1,4 +1,4 @@
-import { getCurrentInstance, onMounted, ref } from 'vue-demi'
+import { getCurrentInstance, onMounted, ref } from 'vue'
 
 export default function useMounted() {
   const isMounted = ref(false)

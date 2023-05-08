@@ -1,18 +1,17 @@
 module.exports = {
-  // 运行环境
   env: {
     browser: true,
     es2021: true,
     node: true
   },
-  extends: ['plugin:vue/vue3-essential', 'standard-with-typescript', 'plugin:prettier/recommended'], // 规则继承
+  extends: ['plugin:vue/vue3-essential', 'standard-with-typescript', 'plugin:prettier/recommended'],
   overrides: [],
   parserOptions: {
+    parser: '@typescript-eslint/parser',
     project: './tsconfig.json',
-    extraFileExtensions: ['.vue'],
-    parser: '@typescript-eslint/parser'
+    extraFileExtensions: ['.vue']
   },
-  plugins: ['@typescript-eslint'], // 插件
+  plugins: ['@typescript-eslint'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

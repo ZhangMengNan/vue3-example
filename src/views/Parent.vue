@@ -1,23 +1,16 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import Child from './Child.vue'
-
-import emitter from '@/utils/mitt'
 
 const inputVal = ref('')
 
 const changeValue = (event: any) => {
   inputVal.value = event.target.value
 }
-
 const change = (result: any) => {
   console.log('inputVal', inputVal.value)
   console.log('result', result)
 }
-
-onMounted(() => {
-  emitter.emit('form-item-created', 'emitter')
-})
 </script>
 
 <template>

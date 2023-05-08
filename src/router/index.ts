@@ -1,4 +1,4 @@
-import Home from '@/views/Home.vue'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 import useRequest from '@/hooks/useRequest/demo.vue'
 import useDebounce from '@/hooks/useDebounce/demo.vue'
@@ -13,12 +13,7 @@ import useTheme from '@/hooks/useTheme/demo.vue'
 
 import Demo from '@/views/demo.vue'
 
-const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: Home
-  },
+const routes: RouteRecordRaw[] = [
   {
     path: '/demo',
     name: 'Demo',
@@ -76,4 +71,9 @@ const routes = [
   }
 ]
 
-export { routes }
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes
+})
+
+export default router

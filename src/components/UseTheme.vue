@@ -7,9 +7,7 @@ const { theme } = storeToRefs(useTheme())
 </script>
 
 <template>
-  <div class="container">
-    <slot :theme="theme" :toggle="toggle"></slot>
-  </div>
+  <slot :theme="theme" :toggle="toggle" />
 </template>
 
 <style></style>

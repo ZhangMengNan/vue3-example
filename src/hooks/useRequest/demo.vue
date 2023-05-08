@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import { message } from 'ant-design-vue'
 import Mock from 'mockjs'
 
+import Container from '@/components/Container.vue'
+
 import useRequest from '@/hooks/useRequest'
 
 const text = ref('')
@@ -38,14 +40,14 @@ const { loading: editLoading, run } = useRequest(editUsername, {
 </script>
 
 <template>
-  <div class="w-sm my-0 mx-a p-8">
-    <div>
+  <Container>
+    <div class="w-[100%]">
       <h1 class="mb">默认请求：</h1>
       <div v-if="defaultLoading">loading...</div>
       <div v-if="data">Username: {{ data }}</div>
       <div v-if="error" class="color-red-600">{{ error.message }}</div>
     </div>
-    <div class="mt-8">
+    <div class="mt-8 w-[100%]">
       <h1 class="mb">手动触发：</h1>
       <a-input
         :value="text"
@@ -57,7 +59,7 @@ const { loading: editLoading, run } = useRequest(editUsername, {
         Edit
       </a-button>
     </div>
-  </div>
+  </Container>
 </template>
 
 <style lang="less" scoped></style>

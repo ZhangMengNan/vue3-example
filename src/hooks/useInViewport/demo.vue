@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import useInViewport from '@/hooks/useInViewport'
 
+import Container from '@/components/Container.vue'
+
 const parentRef = ref()
 const childrenRef = ref()
 const inViewport = ref(false)
@@ -17,7 +19,7 @@ useInViewport(
 </script>
 
 <template>
-  <div class="w-sm my-0 mx-a p-8 flex grid-items-center flex-col text-center">
+  <Container>
     <div ref="parentRef" class="w-[300px] h-[300px] overflow-scroll border border-solid">
       scroll here
       <div class="h-[800px]">
@@ -29,7 +31,7 @@ useInViewport(
     <p :class="[inViewport ? 'color-green-400' : 'color-red-600', 'mt']">
       inViewport: {{ inViewport ? 'visible' : 'hidden' }}
     </p>
-  </div>
+  </Container>
 </template>
 
 <style lang="less" scoped></style>

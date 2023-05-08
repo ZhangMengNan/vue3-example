@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import useSetInterval from '@/hooks/useSetInterval'
 
+import Container from '@/components/Container.vue'
+
 const count = ref(60)
 const isEnd = ref(false)
 
@@ -17,10 +19,10 @@ useSetInterval(() => {
 </script>
 
 <template>
-  <div class="w-sm my-0 mx-a p-8 flex grid-items-center flex-col">
+  <Container>
     <div v-if="isEnd">{{ count }}s 后重试</div>
     <a-button type="primary" v-else @click="isEnd = true">获取验证码</a-button>
-  </div>
+  </Container>
 </template>
 
 <style lang="less" scoped></style>

@@ -3,15 +3,16 @@ import useEventBus from '@/hooks/useEventBus'
 
 import MessageBox from './MessageBox.vue'
 import InputBox from './InputBox.vue'
+import Container from '@/components/Container.vue'
 
 const focus$ = useEventBus()
 </script>
 
 <template>
-  <div class="w-sm my-0 mx-a p-8">
+  <Container>
     <MessageBox :focus$="focus$" />
     <InputBox :focus$="focus$" />
-  </div>
+  </Container>
 </template>
 
 <style lang="less" scoped></style>
