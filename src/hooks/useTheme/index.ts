@@ -6,7 +6,7 @@ import { Theme } from './type'
 const useTheme = defineStore(
   'theme',
   () => {
-    const theme = ref('light')
+    const theme = ref<Theme>('light')
 
     const toggle = (val: Theme) => (theme.value = val)
 
