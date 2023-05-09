@@ -7,6 +7,7 @@ const useTheme = defineStore(
   'theme',
   () => {
     const theme = ref('light')
+
     const toggle = (val: Theme) => (theme.value = val)
 
     watch(theme, (newVal, oldVal) => {

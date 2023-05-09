@@ -7,8 +7,9 @@ const router = useRouter()
 <template>
   <div class="w-xl my-0 mx-a p-8">
     <div class="grid grid-cols-3 grid-rows-3 gap-4">
-      <a-button type="primary" @click="router.push('useRequest')">useRequest</a-button>
       <a-button type="primary" @click="router.push('useDebounce')">useDebounce</a-button>
+      <a-button type="primary" @click="router.push('useThrottle')">useThrottle</a-button>
+      <a-button type="primary" @click="router.push('useRequest')">useRequest</a-button>
       <a-button type="primary" @click="router.push('useEventBus')">useEventBus</a-button>
       <a-button type="primary" @click="router.push('useImage')">useImage</a-button>
       <a-button type="primary" @click="router.push('useInViewport')">useInViewport</a-button>
@@ -20,7 +21,6 @@ const router = useRouter()
       </a-button>
       <a-button type="primary" @click="router.push('useSetInterval')">useSetInterval</a-button>
       <a-button type="primary" @click="router.push('useTheme')">useTheme</a-button>
-      <a-button type="primary" @click="router.push('useThrottle')">useThrottle</a-button>
     </div>
   </div>
 </template>
