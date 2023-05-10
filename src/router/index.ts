@@ -15,7 +15,7 @@ import Demo from '@/views/demo.vue'
 
 const routes: RouteRecordRaw[] = [
   {
-    path: '/demo',
+    path: '/',
     name: 'Demo',
     component: Demo
   },
