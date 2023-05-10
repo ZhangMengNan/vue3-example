@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { ref, onUnmounted } from 'vue'
 
 /**
  * @param {Function} callback - 需要防抖的函数
@@ -17,6 +17,8 @@ export default function useDebounce<T extends (...args: any[]) => any>(callback:
     timer.value !== null && clearTimeout(timer.value)
     timer.value = null
   }
+
+  onUnmounted(cancel)
 
   return {
     run,
