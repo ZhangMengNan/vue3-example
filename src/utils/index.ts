@@ -1,4 +1,4 @@
-import { unref } from 'vue'
+import { unref, defineAsyncComponent } from 'vue'
 import {
   MaybeRefOrGetter,
   AnyFn,
@@ -25,3 +25,21 @@ export function unrefElement<T extends MaybeElement>(
 export const notNullish = <T = any>(val?: T | null | undefined): val is T => val !== null
 
 export const noop = () => {}
+
+// import { markRaw, defineAsyncComponent } from 'vue';
+// const modules = import.meta.glob('./components/*.vue')
+// const link: any = modules[`./components/${routeAddress.value}.vue`]
+
+// try {
+//   layouts.value = markRaw(defineAsyncComponent(link))
+// } catch {
+//   console.log('error')
+// }
+
+// const modules = import.meta.glob('./*/*.vue', { eager: true })
+// const components: Record<string, any> = {}
+
+// for (const path in modules) {
+//   const key = path.replace(/(.*\/)*([^.]+).vue/gi, '$2')
+//   components[key] = defineAsyncComponent(() => import(path))
+// }

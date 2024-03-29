@@ -5,7 +5,7 @@ const router = useRouter()
 </script>
 
 <template>
-  <div class="w-xl my-0 mx-a p-8">
+  <div class="p-8 my-0 w-xl mx-a">
     <div class="grid grid-cols-3 grid-rows-3 gap-4">
       <a-button type="primary" @click="router.push('useDebounce')">useDebounce</a-button>
       <a-button type="primary" @click="router.push('useThrottle')">useThrottle</a-button>
@@ -21,6 +21,7 @@ const router = useRouter()
       </a-button>
       <a-button type="primary" @click="router.push('useSetInterval')">useSetInterval</a-button>
       <a-button type="primary" @click="router.push('useTheme')">useTheme</a-button>
+      <a-button type="primary" @click="router.push('animated-text')">animated text</a-button>
     </div>
   </div>
 </template>

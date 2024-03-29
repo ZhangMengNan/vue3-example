@@ -11,7 +11,8 @@ import useSetInterval from '@/hooks/useSetInterval/demo.vue'
 import useThrottle from '@/hooks/useThrottle/demo.vue'
 import useTheme from '@/hooks/useTheme/demo.vue'
 
-import Demo from '@/views/demo.vue'
+import Demo from '@/views/Demo.vue'
+import AnimatedText from '@/views/AnimatedText.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -68,6 +69,11 @@ const routes: RouteRecordRaw[] = [
     path: '/useTheme',
     name: 'useTheme',
     component: useTheme
+  },
+  {
+    path: '/animated-text',
+    name: 'animatedTtext',
+    component: AnimatedText
   }
 ]
 

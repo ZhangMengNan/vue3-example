@@ -1,4 +1,5 @@
 import { fileURLToPath } from 'url'
+import path from 'path'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
@@ -7,6 +8,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 
 import UnoCSS from 'unocss/vite'
 
@@ -20,7 +22,11 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()]
     }),
-    UnoCSS()
+    UnoCSS(),
+    createSvgIconsPlugin({
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
+      symbolId: 'icon-[dir]-[name]'
+    })
   ],
   // 哪些文件是否需要预编译
   optimizeDeps: {
